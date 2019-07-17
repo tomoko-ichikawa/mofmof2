@@ -6,8 +6,12 @@ class RentalsController < ApplicationController
   end
   
   def create
-      Rental.create(rental_params)
-      redirect_to new_rental_path
+      @blog = Rental.create(rental_params)
+      if @blog.save
+          redirect_to rentals_path, notice: "登録しました"
+      else
+          render 'new'
+      end
   end
   
   def index
