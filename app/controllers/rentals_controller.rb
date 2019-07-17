@@ -1,4 +1,6 @@
 class RentalsController < ApplicationController
+    before_action :set_rental, only:[:show, :edit, :update]
+  
   def new
       @rental = Rental.new
   end
@@ -13,15 +15,12 @@ class RentalsController < ApplicationController
   end
   
   def show
-      @rental = Rental.find(params[:id])
   end
   
   def edit
-      @rental = Rental.find(params[:id])
   end
   
   def update
-      @rental = Rental.find(params[:id])
       if @rental.update(rental_params)
           redirect_to rentals_path
       else
@@ -33,5 +32,10 @@ class RentalsController < ApplicationController
   
   def rental_params
       params.require(:rental).permit(:property, :rent, :address, :age, :remarks, :route_a, :station_a, :minutes_a, :route_b, :station_b, :minutes_b)
- end
+  end
+  
+  def set_rental
+      @rental = Rental.find(params[:id])
+  end
+  
 end

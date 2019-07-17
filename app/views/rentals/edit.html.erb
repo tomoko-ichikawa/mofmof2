@@ -1,34 +1,4 @@
-<h1>登録</h1>
-<h2>物件登録</h2>
+<h1>編集</h1>
+<h2>物件編集</h2>
 
-<%= form_for(@rental) do |f| %>
-    物件名<br>
-    <%= f.text_field :property%><br><br>
-    賃料<br>
-    <%= f.text_field :rent %>円<br><br>
-    住所<br>
-    <%= f.text_field :address %><br><br>
-    築年数<br>
-    <%= f.text_field :age %>年<br><br>
-    備考<br>
-    <%= f.text_field :remarks %>
-    <hr>
-
-    <h3>最寄り駅１</h3>
-    路線名<br>
-    <%= f.text_field :route_a %><br><br>
-    駅名<br>
-    <%= f.text_field :station_a %><br><br>
-    徒歩分数<br>
-    <%= f.text_field :minutes_a %>分<br><br>
-    <h3>最寄り駅２</h3>
-    路線名<br>
-    <%= f.text_field :route_b %><br><br>
-    駅名<br>
-    <%= f.text_field :station_b %><br><br>
-    徒歩分数<br>
-    <%= f.text_field :minutes_b %>分<br><br>
-    <%= f.submit "登録する" %>
-<% end %>
-<br>
-<%= link_to "戻る", rentals_path %>
+<%= render 'form' %>
