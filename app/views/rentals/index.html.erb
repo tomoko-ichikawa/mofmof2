@@ -4,21 +4,23 @@
 
 <table>
   <tr>
-    <th>物件名</th>
-    <th>賃料</th>
-    <th>住所</th>
-    <th>築年数</th>
+    <th>物件名 &emsp; </th>
+    <th>賃料 &emsp; </th>
+    <th>住所 &emsp; </th>
+    <th>築年数 &emsp; </th>
     <th>備考</th>
   </tr>
 
   <% @rentals.each do |r| %>
    <tr>
-     <td><%= r.property %></td>
-     <td><%= r.rent %>円</td>
-     <td><%= r.address %></td>
-     <td><%= r.age %>年</td>
-     <td><%= r.remarks %></td>
+     <td><%= r.property %>&emsp; </td>
+     <td><%= r.rent %>円 &emsp; </td>
+     <td><%= r.address %>&emsp; </td>
+     <td><%= r.age %>年 &emsp; </td>
+     <td><%= r.remarks %>&emsp; </td>
+     <td><%= link_to '詳細', rental_path(r.id) %></td>
    </tr>
    <% end %>
+
 </table>
 <%= link_to "物件を登録する", new_rental_path %>

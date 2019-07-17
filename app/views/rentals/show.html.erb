@@ -1,0 +1,17 @@
+<h1>閲覧</h1>
+<hr>
+    物件名：<%= @rental.property %><br><br>
+    賃料：<%= @rental.rent %>円<br><br>
+    住所：<%= @rental.address %><br><br>
+    築年数<%= @rental.age %>年<br><br>
+    備考：<%= @rental.remarks %><br><br>
+  <hr>
+  <h3>最寄り駅１</h3>
+    路線名 &emsp;<%= @rental.route_a %><br><br>
+    駅名 &emsp;<%= @rental.station_a %><br><br>
+    徒歩分数 &emsp;<%= @rental.minutes_a %>分<br><br>
+  <hr>
+  <h3>最寄り駅２</h3>
+     路線名 &emsp; <%= @rental.route_b %><br><br>
+     駅名<%= @rental.station_b %><br><br>
+     徒歩分数<%= @rental.minutes_b %>分<br><br>

@@ -12,6 +12,10 @@ class RentalsController < ApplicationController
       @rentals = Rental.all
   end
   
+  def show
+      @rental = Rental.find(params[:id])
+  end
+  
   private
   
   def rental_params
