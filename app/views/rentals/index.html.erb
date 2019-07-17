@@ -18,7 +18,8 @@
      <td><%= r.address %>&emsp; </td>
      <td><%= r.age %>年 &emsp; </td>
      <td><%= r.remarks %>&emsp; </td>
-     <td><%= link_to '詳細', rental_path(r.id) %></td>
+     <td><%= link_to '詳細', rental_path(r.id) %> &emsp;</td>
+     <td><%= link_to '編集', edit_rental_path(r.id) %> &emsp;</td>
    </tr>
    <% end %>
 
