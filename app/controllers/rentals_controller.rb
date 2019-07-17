@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-    before_action :set_rental, only:[:show, :edit, :update]
+    before_action :set_rental, only:[:show, :edit, :update, :destroy]
   
   def new
       @rental = Rental.new
@@ -22,10 +22,15 @@ class RentalsController < ApplicationController
   
   def update
       if @rental.update(rental_params)
-          redirect_to rentals_path
+          redirect_to rentals_path, notice:"編集しました"
       else
           render 'edit'
       end
+  end
+  
+  def destroy
+      @rental.destroy
+      redirect_to rentals_path, notice:"削除しました"
   end
   
   private
