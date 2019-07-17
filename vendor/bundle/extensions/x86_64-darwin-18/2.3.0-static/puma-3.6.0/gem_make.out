@@ -1,0 +1,24 @@
+current directory: /Users/ichikawatomoko/Desktop/mofmof2/vendor/bundle/gems/puma-3.6.0/ext/puma_http11
+/Users/ichikawatomoko/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20190717-44450-dgol0y.rb extconf.rb
+checking for BIO_read() in -lcrypto... no
+checking for BIO_read() in -llibeay32... no
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /Users/ichikawatomoko/Desktop/mofmof2/vendor/bundle/extensions/x86_64-darwin-18/2.3.0-static/puma-3.6.0/mkmf.log
+
+current directory: /Users/ichikawatomoko/Desktop/mofmof2/vendor/bundle/gems/puma-3.6.0/ext/puma_http11
+make "DESTDIR=" clean
+
+current directory: /Users/ichikawatomoko/Desktop/mofmof2/vendor/bundle/gems/puma-3.6.0/ext/puma_http11
+make "DESTDIR="
+compiling io_buffer.c
+compiling mini_ssl.c
+compiling puma_http11.c
+compiling http11_parser.c
+linking shared-object puma/puma_http11.bundle
+
+current directory: /Users/ichikawatomoko/Desktop/mofmof2/vendor/bundle/gems/puma-3.6.0/ext/puma_http11
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20190717-44450-yb3c94/puma
