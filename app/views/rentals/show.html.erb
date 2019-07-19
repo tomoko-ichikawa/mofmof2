@@ -3,7 +3,7 @@
     物件名：<%= @rental.property %><br><br>
     賃料：<%= @rental.rent %>円<br><br>
     住所：<%= @rental.address %><br><br>
-    築年数<%= @rental.age %>年<br><br>
+    築年数：<%= @rental.age %>年<br><br>
     備考：<%= @rental.remarks %><br><br>
   <hr>
   <h3>最寄り駅１</h3>
@@ -13,5 +13,5 @@
   <hr>
   <h3>最寄り駅２</h3>
      路線名 &emsp; <%= @rental.stations.second.route_name %><br><br>
-     駅名<%= @rental.stations.second.station_name %><br><br>
-     徒歩分数<%= @rental.stations.second.walking_minutes %>分<br><br>
+     駅名 &emsp;<%= @rental.stations.second.station_name %><br><br>
+     徒歩分数 &emsp;<%= @rental.stations.second.walking_minutes %>分<br><br>
