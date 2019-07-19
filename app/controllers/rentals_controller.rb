@@ -7,7 +7,7 @@ class RentalsController < ApplicationController
   end
   
   def create
-      @rental = Rental.create(rental_params)
+      @rental = Rental.new(rental_params)
       if @rental.save
           redirect_to rentals_path, notice: "登録しました"
       else
