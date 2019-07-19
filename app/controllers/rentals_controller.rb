@@ -3,11 +3,12 @@ class RentalsController < ApplicationController
   
   def new
       @rental = Rental.new
+      2.times {@rental.stations.build}
   end
   
   def create
-      @blog = Rental.create(rental_params)
-      if @blog.save
+      @rental = Rental.create(rental_params)
+      if @rental.save
           redirect_to rentals_path, notice: "登録しました"
       else
           render 'new'
@@ -40,7 +41,7 @@ class RentalsController < ApplicationController
   private
   
   def rental_params
-      params.require(:rental).permit(:property, :rent, :address, :age, :remarks, :route_a, :station_a, :minutes_a, :route_b, :station_b, :minutes_b)
+      params.require(:rental).permit(:property, :rent, :address, :age, :remarks,stations_attributes: [:id, :_destroy, :rental_id, :route_name, :station_name, :walking_minutes])
   end
   
   def set_rental

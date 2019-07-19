@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  resources :rentals 
+  get 'stations/index'
+
+  resources :rentals
       
 end
