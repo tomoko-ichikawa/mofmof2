@@ -8,10 +8,14 @@ class RentalsController < ApplicationController
   
   def create
       @rental = Rental.new(rental_params)
-      if @rental.save
-          redirect_to rentals_path, notice: "登録しました"
-      else
-          render 'new'
+      respond_to do |format|
+          if @rental.save
+              format.html { redirect_to @rental, notice: 'Rent property was successfully created.' }
+              format.json { render :show, status: :created, location: @rental }
+              else
+              format.html { render :new }
+              format.json { render json: @rental.errors, status: :unprocessable_entity }
+          end
       end
   end
   
@@ -23,13 +27,18 @@ class RentalsController < ApplicationController
   end
   
   def edit
+      
   end
   
   def update
-      if @rental.update(rental_params)
-          redirect_to rentals_path, notice:"編集しました"
-      else
-          render 'edit'
+      respond_to do |format|
+          if @rental.update(rent_property_params)
+              format.html { redirect_to @rental, notice: 'Rent property was successfully updated.' }
+              format.json { render :show, status: :ok, location: @rental }
+              else
+              format.html { render :edit }
+              format.json { render json: @rental.errors, status: :unprocessable_entity }
+          end
       end
   end
   
