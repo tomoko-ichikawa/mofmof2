@@ -27,12 +27,12 @@ class RentalsController < ApplicationController
   end
   
   def edit
-      
+      @rental.stations.build
   end
   
   def update
       respond_to do |format|
-          if @rental.update(rent_property_params)
+          if @rental.update(rental_params)
               format.html { redirect_to @rental, notice: 'Rent property was successfully updated.' }
               format.json { render :show, status: :ok, location: @rental }
               else
