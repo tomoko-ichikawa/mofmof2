@@ -3,14 +3,19 @@ class RentalsController < ApplicationController
   
   def new
       @rental = Rental.new
+      2.times {@rental.stations.build}
   end
   
   def create
-      @blog = Rental.create(rental_params)
-      if @blog.save
-          redirect_to rentals_path, notice: "登録しました"
-      else
-          render 'new'
+      @rental = Rental.new(rental_params)
+      respond_to do |format|
+          if @rental.save
+              format.html { redirect_to @rental, notice: 'Rent property was successfully created.' }
+              format.json { render :show, status: :created, location: @rental }
+              else
+              format.html { render :new }
+              format.json { render json: @rental.errors, status: :unprocessable_entity }
+          end
       end
   end
   
@@ -19,16 +24,22 @@ class RentalsController < ApplicationController
   end
   
   def show
+      @stations = Station.where(rental_id: set_rental.id).all
   end
   
   def edit
+      @rental.stations.build
   end
   
   def update
-      if @rental.update(rental_params)
-          redirect_to rentals_path, notice:"編集しました"
-      else
-          render 'edit'
+      respond_to do |format|
+          if @rental.update(rental_params)
+              format.html { redirect_to @rental, notice: 'Rent property was successfully updated.' }
+              format.json { render :show, status: :ok, location: @rental }
+              else
+              format.html { render :edit }
+              format.json { render json: @rental.errors, status: :unprocessable_entity }
+          end
       end
   end
   
@@ -40,7 +51,7 @@ class RentalsController < ApplicationController
   private
   
   def rental_params
-      params.require(:rental).permit(:property, :rent, :address, :age, :remarks, :route_a, :station_a, :minutes_a, :route_b, :station_b, :minutes_b)
+      params.require(:rental).permit(:property, :rent, :address, :age, :remarks,stations_attributes: [:id, :_destroy, :rental_id, :route_name, :station_name, :walking_minutes])
   end
   
   def set_rental

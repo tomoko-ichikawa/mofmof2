@@ -1,17 +1,15 @@
 <h1>閲覧</h1>
 <hr>
-    物件名：<%= @rental.property %><br><br>
-    賃料：<%= @rental.rent %>円<br><br>
-    住所：<%= @rental.address %><br><br>
-    築年数<%= @rental.age %>年<br><br>
-    備考：<%= @rental.remarks %><br><br>
+    <b>物件名</b>：<%= @rental.property %><br><br>
+    <b>賃料</b>：<%= @rental.rent %>円<br><br>
+    <b>住所</b>：<%= @rental.address %><br><br>
+    <b>築年数</b>：<%= @rental.age %>年<br><br>
+    <b>備考</b>：<%= @rental.remarks %><br><br>
   <hr>
-  <h3>最寄り駅１</h3>
-    路線名 &emsp;<%= @rental.route_a %><br><br>
-    駅名 &emsp;<%= @rental.station_a %><br><br>
-    徒歩分数 &emsp;<%= @rental.minutes_a %>分<br><br>
-  <hr>
-  <h3>最寄り駅２</h3>
-     路線名 &emsp; <%= @rental.route_b %><br><br>
-     駅名<%= @rental.station_b %><br><br>
-     徒歩分数<%= @rental.minutes_b %>分<br><br>
+  <% @stations.each_with_index do |st, i| %>
+  <h3>最寄り駅<%= "#{i+1}" %></h3>
+    <b>路線名</b>&nbsp;<%= st.route_name %><br><br>
+    <b>駅名</b>&nbsp;<%= st.station_name %><br><br>
+    <b>徒歩分数</b>&nbsp;<%= st.walking_minutes %>分<br><br>
+<% end %><br>
+<%= link_to "戻る", rentals_path %>

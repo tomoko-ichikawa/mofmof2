@@ -1,4 +1,18 @@
 <%= form_for(@rental) do |f| %>
+
+
+  <% if @rental.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
+
+      <ul>
+      <% @rental.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
     物件名<br>
     <%= f.text_field :property%><br><br>
     賃料<br>
@@ -8,24 +22,22 @@
     築年数<br>
     <%= f.text_field :age %>年<br><br>
     備考<br>
-    <%= f.text_field :remarks %>
+    <%= f.text_area :remarks %>
     <hr>
 
-    <h3>最寄り駅１</h3>
+    <% x = 1 %>
+    <%= f.fields_for :stations do |s| %>
+    <h3>最寄り駅<%= x %></h3>
     路線名<br>
-    <%= f.text_field :route_a %><br><br>
+    <%= s.text_field :route_name %><br><br>
     駅名<br>
-    <%= f.text_field :station_a %><br><br>
+    <%= s.text_field :station_name %><br><br>
     徒歩分数<br>
-    <%= f.text_field :minutes_a %>分<br><br>
-    <h3>最寄り駅２</h3>
-    路線名<br>
-    <%= f.text_field :route_b %><br><br>
-    駅名<br>
-    <%= f.text_field :station_b %><br><br>
-    徒歩分数<br>
-    <%= f.text_field :minutes_b %>分<br><br>
-    <%= f.submit "登録する" %>
+    <%= s.text_field :walking_minutes %>分<br><br>
+    <% x += 1 %>
+    <% end %>
+    <br>
+    <%= f.submit "登録する" %><br>
+    <%= link_to "戻る", rentals_path %>
+
 <% end %>
-<br>
-<%= link_to "戻る", rentals_path %>
