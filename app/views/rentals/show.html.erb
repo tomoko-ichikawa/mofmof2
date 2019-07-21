@@ -8,10 +8,8 @@
   <hr>
   <% @stations.each_with_index do |st, i| %>
   <h3>最寄り駅<%= "#{i+1}" %></h3>
-  <div class="station_info">
-    <p><span class="b">路線名</span>&nbsp;<%= st.route_name %></p>
-    <p><span class="b">駅名</span>&nbsp;<%= st.station_name %></p>
-    <p><span class="b">徒歩分数</span>&nbsp;<%= st.walking_minutes %>分</p>
-  </div>
+    <b>路線名</b>&nbsp;<%= st.route_name %><br><br>
+    <b>駅名</b>&nbsp;<%= st.station_name %><br><br>
+    <b>徒歩分数</b>&nbsp;<%= st.walking_minutes %>分<br><br>
 <% end %><br>
 <%= link_to "戻る", rentals_path %>
