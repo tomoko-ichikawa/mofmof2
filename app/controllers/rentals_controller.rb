@@ -24,6 +24,7 @@ class RentalsController < ApplicationController
   end
   
   def show
+      @stations = Station.where(rental_id: set_rental.id).all
   end
   
   def edit
